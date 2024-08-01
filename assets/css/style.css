@@ -977,6 +977,13 @@ section .container {
   margin-bottom: 20px;
 }
 
+.project-demo{
+  margin-top: 50px;
+  margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
 .portfolio-details .portfolio-info {
   padding-top: 45px;
 }
@@ -1231,6 +1238,9 @@ section .container {
      
 }
 
+.design{
+  border-radius: 15px;
+}
 
 .credits a {
   color: #b2904f;
