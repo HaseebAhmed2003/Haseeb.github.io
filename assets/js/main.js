@@ -41,7 +41,7 @@
   const scrollto = (el) => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
     })
   }
 
@@ -52,12 +52,13 @@
     select('#navbar').classList.toggle('navbar-mobile')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
+    this.setAttribute('aria-expanded', select('#navbar').classList.contains('navbar-mobile'))
   })
 
   /**
    * Scrool with ofset on links with a class name .scrollto
    */
-  on('click', '#navbar .nav-link', function(e) {
+  on('click', '#navbar .nav-link, .skip-link', function(e) {
     let section = select(this.hash)
     if (section) {
       e.preventDefault()
@@ -71,13 +72,15 @@
         item.classList.remove('active')
       })
 
-      this.classList.add('active')
+      navlinks.forEach(item => item.classList.toggle('active', item.hash === this.hash))
+      history.replaceState(null, '', this.hash)
 
       if (navbar.classList.contains('navbar-mobile')) {
         navbar.classList.remove('navbar-mobile')
         let navbarToggle = select('.mobile-nav-toggle')
         navbarToggle.classList.toggle('bi-list')
         navbarToggle.classList.toggle('bi-x')
+        navbarToggle.setAttribute('aria-expanded', 'false')
       }
 
       if (this.hash == '#header') {
@@ -95,6 +98,8 @@
             item.classList.remove('section-show')
           })
           section.classList.add('section-show')
+          section.setAttribute('tabindex', '-1')
+          section.focus({preventScroll: true})
 
         }, 350);
       } else {
@@ -102,6 +107,8 @@
           item.classList.remove('section-show')
         })
         section.classList.add('section-show')
+        section.setAttribute('tabindex', '-1')
+        section.focus({preventScroll: true})
       }
 
       scrollto(this.hash)
@@ -115,7 +122,7 @@
     if (window.location.hash) {
       let initial_nav = select(window.location.hash)
 
-      if (initial_nav) {
+      if (initial_nav && initial_nav.tagName === 'SECTION') {
         let header = select('#header')
         let navlinks = select('#navbar .nav-link', true)
 
@@ -196,6 +203,14 @@
       });
 
       let portfolioFilters = select('#portfolio-flters li', true);
+      portfolioFilters.forEach(item => {
+        item.tabIndex = 0;
+        item.setAttribute('role', 'button');
+        item.setAttribute('aria-pressed', item.classList.contains('filter-active'));
+        item.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); item.click(); }
+        });
+      });
 
       on('click', '#portfolio-flters li', function(e) {
         e.preventDefault();
@@ -203,6 +218,7 @@
           el.classList.remove('filter-active');
         });
         this.classList.add('filter-active');
+        portfolioFilters.forEach(item => item.setAttribute('aria-pressed', item === this));
 
         portfolioIsotope.arrange({
           filter: this.getAttribute('data-filter')

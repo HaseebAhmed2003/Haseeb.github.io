@@ -1,0 +1,36 @@
+/* Focused readability and keyboard improvements; retain the existing palette and fonts. */
+a { color: #73571f; }
+a:hover, a:focus { color: #574116; text-decoration: underline; }
+a:focus-visible, button:focus-visible { outline: 3px solid #73571f; outline-offset: 4px; }
+#header h1 { line-height: 1.2; }
+#header h2 { max-width: 55ch; line-height: 1.6; }
+#header h2 span { border: 0; }
+.mobile-nav-toggle { border: 0; background: transparent; min-width: 44px; min-height: 44px; }
+section:not(.section-show) { visibility: hidden; }
+section.section-show { visibility: visible; }
+.section-title h2 { color: #666; }
+.featured-work { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2rem; }
+.featured-work article { padding: 1.5rem; border: 1px solid #d6c6a9; border-radius: 8px; }
+.featured-work p, .case-study p { max-width: 70ch; line-height: 1.75; }
+.skip-link { position: fixed; top: -100px; left: 1rem; z-index: 1000; padding: 1rem; background: white; }
+.skip-link:focus { top: 1rem; }
+.case-study { max-width: 960px; margin: 3rem auto; padding: 2rem; background: white; border-radius: 16px; }
+.case-study h1 { margin: 1.5rem 0; }
+.case-study h2 { margin-top: 2rem; }
+#portfolio-flters li:focus-visible { outline: 3px solid #73571f; }
+.portfolio-wrap:focus-within .portfolio-info { opacity: 1; }
+@media (max-width: 768px) {
+ .featured-work { grid-template-columns: 1fr; }
+ #header.header-top h1 { font-size: 20px; margin-right: 48px; }
+ #header.header-top .container { align-items: flex-start; }
+ .section-title p { font-size: 26px; overflow-wrap: anywhere; }
+ .case-study { margin: 1rem; padding: 1.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+ *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+.navbar a, .navbar a:focus { color: #73571f; }
+.navbar a:hover, .navbar .active, .navbar .active:focus { color: #333; }
+.about-me .content h3, .resume .resume-title, .resume .resume-item h4 { color: #73571f; }
+iframe { max-width: 100%; }

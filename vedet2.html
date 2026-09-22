@@ -26,6 +26,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/interview.css" rel="stylesheet">
 
 </head>
 
@@ -71,33 +72,16 @@
             <h3>Project Information</h3>
             <ul>
               <li><strong>Category</strong>: Machine Learning </li>
-              <li><strong>Project URL</strong>: <a href="https://abdul-haseeb-vehicle-classifier-2.hf.space/?logs=build&embed=true&embed_options=show_toolbar&embed_options=dark_theme#c70ca5a6" target="_blank">Vehicle Classifier</a></li>
-              <li><strong>Github URL</strong>: <a href="https://github.com/HaseebAhmed2003/Vehicle-classifier2.0" target="_blank">Vehicle-Classifier model</a></li>
+              <li><strong>Historical project link</strong>: <a href="https://abdul-haseeb-vehicle-classifier-2.hf.space/?logs=build&embed=true&embed_options=show_toolbar&embed_options=dark_theme#c70ca5a6" target="_blank" rel="noopener noreferrer">Vehicle Classifier</a></li>
+              <li><strong>Github URL</strong>: <a href="https://github.com/HaseebAhmed2003/Vehicle-classifier2.0" target="_blank" rel="noopener noreferrer">Vehicle-Classifier model</a></li>
             </ul>
 
-            <p>
-              Enhanced the previously developed vehicle classification model by applying <b>transfer learning</b> with the <b>EfficientNet B3</b> pre-trained model and <b>ImageNet</b> weights. The model was then fine-tuned on a vehicle dataset sourced from publicly available data. As a result, it achieved an impressive <b>95% accuracy</b> on the validation set.
-              <br><br>
-              The model is able to classify vehicles into the following categories:
-              <li>Auto Rickshaw</li>
-              <li>Bicycle</li>          
-              <li>Bus</li>
-              <li>Car</li>
-              <li>Motorcycle</li>
-              <li>Truck</li>
-              <li>Van</li>
-            </p>
+            <h3>Problem and contribution</h3><p>A personal vehicle-image classification interface. I connected image upload and preprocessing to a saved Keras model and displayed the predicted vehicle class.</p>
+            <h3>Implementation</h3><p>The local Streamlit app resizes images to 300 × 300, applies EfficientNet preprocessing, adds a batch dimension, runs model.predict, and maps argmax to seven vehicle classes.</p>
+            <h3>Evidence and limits</h3><p>The inference code was inspected locally. The training run, reported validation accuracy, saved model behavior, and hosted demo have not been revalidated. The app currently reloads the model for each image; caching and explicit RGB conversion are useful next steps.</p>
           </div>
 
-          <div class="col-lg-8">
-            <h2 class="project-demo">Project Demo:</h2>
-            <iframe class="design"
-	          src="https://abdul-haseeb-vehicle-classifier-2.hf.space"
-	          frameborder="0"
-	          width="1200"
-	          height="600"
-            ></iframe>
-          </div>
+          <div class="col-lg-8"><p>Historical hosted demo: use the project link above. Availability is not guaranteed.</p><p><a href="index.html#portfolio">Back to projects</a></p></div>
 
         </div>
 
